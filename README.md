@@ -61,3 +61,11 @@ Keystatic GitHub mode uses these environment variables:
 - Deploy the website on Vercel.
 - Test the complete website locally before deployment.
 - Keep secrets outside the repository.
+
+## Lokaal starten
+
+Gebruik Node.js 22 of hoger. Voer vanuit deze projectmap `npm ci` en daarna `npm run dev` uit. Open de [voorpagina](http://localhost:3000) of [Keystatic](http://localhost:3000/keystatic). Met `npm run build` controleer je de productiebuild.
+
+Keystatic schrijft lokaal naar `content/artikelen`. Elk artikel staat in een Markdown-bestand met metadata bovenaan. Geüploade artikelbeelden komen in `public/artikelbeelden`. Voeg bij een upload ook een alt-tekst toe. De optie **Uitlichten op de voorpagina** kiest het hoofdartikel. Bij meerdere geselecteerde artikelen verschijnt het meest recente.
+
+Voor een latere Vercel-deployment stel je naast de vier Keystatic-variabelen hierboven ook `NEXT_PUBLIC_KEYSTATIC_REPOSITORY` in als `eigenaar/repository`. Koppel de custom GitHub App aan de private repository en controleer de schrijfrechten met een bevoegd en een onbevoegd account. Keystatic met lokale opslag is alleen actief op de ontwikkelserver.
