@@ -6,7 +6,7 @@ samenvatting: >-
   Vuurwerk is voor veel honden allesbehalve een feestje. Hoe herken je
   vuurwerkangst en wat kun je doen om je viervoeter gerust te stellen? Met deze
   tips help je je hond veilig en rustig door de feestdagen.
-uitgelicht: false
+uitgelicht: true
 fictief: false
 huisstijlbeeld: krant
 afbeelding: >-
