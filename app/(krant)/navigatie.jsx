@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronDown, Flower2, Heart, House, MessageCircleQuestion, Newspaper, PawPrint, Search, Stamp, Zap } from 'lucide-react';
+import { ChartNoAxesColumn, ChevronDown, Flower2, Heart, House, MessageCircleQuestion, Newspaper, PawPrint, Search, Stamp, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
@@ -9,14 +9,13 @@ const hoofdlinks = [
   { href: '/', label: 'Voorpagina', icoon: House },
   { href: '/artikelen', label: 'Artikelen', icoon: Newspaper },
   { href: '/latest-news', label: 'Latest News', icoon: Zap },
+  { href: '/pootjes-in-cijfers', label: 'Pootjes in cijfers', icoon: ChartNoAxesColumn },
 ];
 
 const ontdeklinks = [
-  { href: '/quiz', label: 'Kwispelquiz', icoon: Flower2, accent: true },
-  { href: '/blaf-of-blaat', label: 'Blaf of Blaat?', icoon: MessageCircleQuestion },
-  { href: '/pootjes-in-cijfers', label: 'Pootjes in cijfers', icoon: PawPrint, accent: true },
   { href: '/kwispelpas', label: 'De Kwispelpas', icoon: Stamp },
   { href: '/snuffelzoeker', label: 'De Snuffelzoeker', icoon: Search },
+  { href: '/blaf-of-blaat', label: 'Blaf of Blaat?', icoon: MessageCircleQuestion },
 ];
 
 const overOns = { href: '/over-ons', label: 'Over ons', icoon: Heart };

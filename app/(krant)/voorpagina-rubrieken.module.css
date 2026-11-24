@@ -1,0 +1,75 @@
+.datakaart {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: clamp(1rem, 3.5vw, 2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1rem;
+  background: var(--beige);
+  box-shadow: 0 .25rem 0 var(--goud);
+}
+.datakaart h2 { font-size: clamp(1.9rem, 4vw, 3.1rem); }
+.datakaart p { margin: .45rem 0; }
+.poot { display: block; margin-bottom: .55rem; color: var(--rood); fill: var(--roze); }
+.datakaart .datum, .datakaart .bronnen { font: 650 .9rem/1.4 var(--label); }
+.datakaart .bronnen { margin: .75rem 0; }
+.aantallen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin: .65rem 0; }
+.aantallen > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  gap: .3rem;
+  padding: .6rem .75rem;
+  border: 1px solid var(--lijn);
+  border-radius: .65rem;
+  background: var(--papier);
+}
+.aantallen dt { font: 700 .82rem/1.35 var(--label); overflow-wrap: anywhere; }
+.aantallen dd { margin: 0; font: 400 clamp(1.2rem, 3vw, 2rem)/1.1 var(--display); }
+
+.speelkop { display: block; }
+.speelkop p { margin: .4rem 0 0; }
+.speelkaarten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.speelkaart {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--kers);
+  border-radius: .95rem;
+  background: var(--beige);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.speelkaart:nth-child(2) { background: var(--roze); }
+.speelkaart:hover, .speelkaart:focus-within { transform: translateY(-3px); box-shadow: 0 .28rem 0 var(--goud); }
+.speelkaart img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  height: auto;
+  object-fit: contain;
+  border-radius: .88rem .88rem 0 0;
+  background: var(--papier);
+}
+.speelkaart > div { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 1rem; }
+.speelkaart h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+.speelkaart p { margin: .5rem 0 1rem; font-size: 1.1rem; line-height: 1.4; }
+.speelkaart a { margin-top: auto; }
+
+@media (max-width: 900px) {
+  .speelkaarten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 580px) {
+  .datakaart, .speelkaarten { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .speelkaart { transition: none; }
+  .speelkaart:hover, .speelkaart:focus-within { transform: none; }
+}

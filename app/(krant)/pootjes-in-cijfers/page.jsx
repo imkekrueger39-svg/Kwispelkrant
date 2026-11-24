@@ -1,13 +1,10 @@
-import { unstable_cache } from 'next/cache';
 import { connection } from 'next/server';
-import { haalAustinPootjes } from '../../../lib/austin-pootjes.mjs';
+import { austinVerversing, leesAustin } from '../../../lib/austin-pootjes-cache';
 import { Bloem } from '../onderdelen';
 import Pootjesgrafiek from './pootjesgrafiek';
 import stijl from './pootjes.module.css';
 
 export const metadata = { title: 'Pootjes in cijfers' };
-const verversingInSeconden = 86400;
-const leesAustin = unstable_cache(haalAustinPootjes, ['austin-pootjes-dagelijks'], { revalidate: verversingInSeconden });
 const datumformaat = new Intl.DateTimeFormat('nl-BE', { dateStyle: 'long', timeZone: 'UTC' });
 const ophaalformaat = new Intl.DateTimeFormat('nl-BE', {
   dateStyle: 'long', timeStyle: 'short', timeZone: 'America/Chicago',
@@ -25,7 +22,7 @@ export default async function PootjesInCijfers() {
 
   const { data = [], opgehaaldOp } = resultaat ?? {};
   const recentsteDag = data.at(-1)?.date;
-  const mogelijkVerouderd = opgehaaldOp && Date.now() - Date.parse(opgehaaldOp) >= verversingInSeconden * 1000;
+  const mogelijkVerouderd = opgehaaldOp && Date.now() - Date.parse(opgehaaldOp) >= austinVerversing * 1000;
   return (
     <div className={stijl.pagina}>
       <header className={stijl.hero}>
