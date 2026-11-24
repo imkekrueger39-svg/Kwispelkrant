@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import Nieuwsfeed from './latest-news/nieuwsfeed';
 import { alleArtikelen } from '../../lib/artikelen';
 import { Artikelbeeld, Artikelkaarten, Artikelmeta, Bloem } from './onderdelen';
+
+export const revalidate = 3600;
 
 export default async function Voorpagina() {
   const artikelen = await alleArtikelen();
@@ -29,6 +32,7 @@ export default async function Voorpagina() {
           <Artikelbeeld entry={hoofdartikel.entry} prioriteit />
         </section>
       )}
+      <Nieuwsfeed />
       <section className="recent" aria-labelledby="laatste">
         <div className="sectiekop">
           <h2 id="laatste">Laatste nieuws <Bloem /></h2>

@@ -1,0 +1,69 @@
+:global(.uitgelicht) + .feed, :global(.quizblok) + .feed {
+  margin-top: clamp(2.5rem, 5vw, 4.7rem);
+}
+
+.kop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+  border: 1px solid var(--kers);
+  border-radius: 1rem;
+  background: var(--roze);
+  box-shadow: 0 .25rem 0 var(--goud);
+}
+
+.kop :is(h1, h2) { font-size: clamp(1.65rem, 4vw, 3.2rem); }
+.kop h1 span, .kop h2 span { font-size: .65em; }
+.kop p { margin: .3rem 0 0; }
+.poot {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--beige);
+  font-size: 1.25rem;
+}
+
+.uitleg { margin: 1.15rem 0 .85rem; }
+.kaarten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kaart, .leeg {
+  padding: 1.15rem;
+  border: 1px solid var(--lijn);
+  border-radius: .85rem;
+  background: var(--beige);
+}
+
+.kaart article { display: flex; flex-direction: column; align-items: flex-start; gap: .85rem; height: 100%; }
+.kaart :is(h2, h3) { font-size: clamp(1.35rem, 2.2vw, 1.9rem); }
+.kaart a { margin-top: auto; }
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .55rem;
+  margin: 0;
+  font: 650 .875rem/1.4 var(--label);
+}
+.meta span { padding: .25rem .55rem; border-radius: 2rem; background: var(--roze); }
+.leeg { margin: 0; }
+.meer { display: inline-block; margin-top: 1rem; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .kaarten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 580px) {
+  .kaarten { grid-template-columns: minmax(0, 1fr); }
+}
