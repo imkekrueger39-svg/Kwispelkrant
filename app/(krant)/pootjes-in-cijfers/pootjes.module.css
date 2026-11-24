@@ -1,0 +1,245 @@
+.pagina { max-width: 68rem; margin-inline: auto; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, .42fr);
+  align-items: end;
+  gap: 1rem 2rem;
+  padding-bottom: clamp(1.2rem, 4vw, 2rem);
+}
+
+.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); }
+.hero h1 span { font-size: .55em; vertical-align: .2em; }
+.hero p { max-width: 44ch; margin: .65rem 0 0; }
+.hero .voorbeeld {
+  padding: .8rem 1rem;
+  border-inline-start: .25rem solid var(--rood);
+  border-radius: .4rem .75rem .75rem .4rem;
+  background: var(--roze);
+  font: 500 .95rem/1.45 var(--label);
+}
+
+.grafiek {
+  padding: clamp(.85rem, 3vw, 2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1.35rem;
+  background: var(--beige);
+  box-shadow: 0 .32rem 0 var(--goud);
+}
+
+.grafiekkop { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.grafiekkop h2, .duiding h2 { font-size: clamp(1.65rem, 4vw, 2.8rem); }
+.grafiekkop p { margin: .4rem 0 0; line-height: 1.35; }
+
+.mascotte {
+  position: relative;
+  flex: 0 0 clamp(4rem, 12vw, 7rem);
+  align-self: flex-start;
+  padding: .25rem;
+  border-radius: 46% 54% 43% 57%;
+  background: var(--roze);
+  box-shadow: .18rem .2rem 0 var(--goud);
+}
+.mascotte img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--lijn);
+  border-radius: 50% 44% 47% 42%;
+  transform-origin: 50% 85%;
+}
+.mascotte span {
+  position: absolute;
+  top: -.6rem;
+  right: -.25rem;
+  color: var(--rood);
+  opacity: 0;
+  transform: translateY(.25rem);
+  transition: opacity 250ms ease, transform 300ms ease-out;
+}
+.mascotte:is([data-actief='true'], :hover) img { animation: kwispel 520ms ease-in-out; }
+.mascotte:is([data-actief='true'], :hover) span { opacity: 1; transform: none; }
+
+@keyframes kwispel {
+  30% { transform: rotate(-6deg) translateY(-2px); }
+  65% { transform: rotate(3deg); }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 1.25rem;
+  padding-block: .9rem;
+  border-bottom: 1px dashed var(--rood);
+}
+
+.keuzegroep { min-inline-size: 0; padding: 0; margin: 0; border: 0; }
+.keuzegroep legend { margin-bottom: .35rem; font: 750 .9rem/1.4 var(--label); }
+.keuzegroep > div { display: flex; flex-wrap: wrap; gap: .35rem; }
+.keuzegroep label { position: relative; cursor: pointer; max-width: 100%; }
+.keuzegroep input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; }
+.keuzegroep label span {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: .4rem .75rem;
+  border: 1px solid var(--kers);
+  border-radius: 2rem;
+  background: var(--papier);
+  text-align: center;
+  font: 700 .85rem/1.25 var(--label);
+}
+.keuzegroep input:checked + span { background: var(--kers); color: var(--papier); }
+.keuzegroep input:focus-visible + span, .dag button:focus-visible, .tabel summary:focus-visible {
+  outline: 3px solid var(--rood);
+  outline-offset: 3px;
+}
+
+.sleutel { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1rem; margin-top: .85rem; }
+.sleutel, .bediening { font: 600 .85rem/1.45 var(--label); }
+.sleutel p, .legenda { margin: 0; }
+.legenda { display: flex; flex-wrap: wrap; gap: .4rem .85rem; padding: 0; list-style: none; }
+.legenda li { display: flex; align-items: center; gap: .35rem; }
+.legenda .poot { width: 1.1rem; }
+.bediening { margin: .65rem 0 .9rem; }
+
+.spoor {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin: 0;
+  padding: .7rem .45rem .9rem;
+  list-style: none;
+  border: 1px solid var(--lijn);
+  border-radius: 1.1rem .85rem 1.25rem .8rem;
+  background:
+    radial-gradient(ellipse at 12% 13%, #fd9bb746 0%, transparent 46%),
+    radial-gradient(ellipse at 88% 82%, #d8973c44 0%, transparent 49%),
+    var(--papier);
+}
+.dag {
+  --stap: -.25rem;
+  --bocht: 10deg;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 7rem;
+  padding-block: .55rem;
+}
+.dag:nth-child(even) { --stap: .42rem; --bocht: -10deg; }
+.dag::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 46%;
+  height: .75rem;
+  border-top: 2px dashed var(--goud);
+  border-radius: 50%;
+  transform: rotate(var(--bocht));
+  pointer-events: none;
+}
+.dag[data-open='true'] { z-index: 1; }
+.dag button {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: .3rem;
+  width: 100%;
+  min-height: 5.5rem;
+  padding: .25rem .15rem;
+  border: 0;
+  border-radius: 48% 45% 43% 50%;
+  background: transparent;
+  color: var(--kers);
+  font: 700 .8rem/1.3 var(--label);
+  cursor: pointer;
+  transform: translateY(var(--stap));
+}
+.dag button time {
+  padding: .22rem .48rem;
+  border: 1px solid var(--lijn);
+  border-radius: 2rem;
+  background: var(--papier);
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+.dag[data-open='true'] button time { border-color: var(--rood); background: var(--roze); }
+.afdrukken {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .12rem;
+  width: min(94%, 5.5rem);
+  min-height: 2.55rem;
+  border-radius: 65% 45% 60% 40%;
+  background: radial-gradient(ellipse, var(--papier) 48%, transparent 76%);
+  transition: transform 300ms ease-out;
+}
+.dag[data-open='true'] .afdrukken { transform: translateY(-.2rem); }
+.afdrukken > span { width: min(42%, 2.4rem); }
+.poot {
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+  color: var(--rood);
+  transform: scale(var(--pootgrootte)) rotate(-9deg);
+}
+.poot i { position: absolute; border: 1.5px solid currentColor; border-radius: 50%; background: currentColor; }
+.poot i:nth-child(1) { top: 33%; left: 3%; width: 20%; height: 28%; transform: rotate(-23deg); }
+.poot i:nth-child(2) { top: 10%; left: 24%; width: 21%; height: 29%; transform: rotate(-12deg); }
+.poot i:nth-child(3) { top: 9%; right: 25%; width: 21%; height: 30%; transform: rotate(11deg); }
+.poot i:nth-child(4) { top: 31%; right: 3%; width: 20%; height: 28%; transform: rotate(25deg); }
+.poot i:nth-child(5) { bottom: 7%; left: 22%; width: 57%; height: 43%; border-radius: 55% 55% 37% 37%; }
+.contour { color: var(--kers); transform: scale(var(--pootgrootte)) rotate(9deg); }
+.contour i { background: repeating-linear-gradient(-40deg, var(--goud) 0 2px, var(--beige) 2px 4px); }
+.tooltip {
+  position: absolute;
+  inset-inline: .1rem;
+  bottom: calc(100% - .75rem);
+  display: grid;
+  gap: .2rem;
+  padding: .5rem;
+  border-radius: .55rem;
+  background: var(--kers);
+  color: var(--papier);
+  box-shadow: 0 .15rem .65rem #640d1440;
+  font: 500 .76rem/1.35 var(--label);
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: calc(50% - .35rem);
+  border: .35rem solid transparent;
+  border-top-color: var(--kers);
+}
+.tooltip span { display: flex; justify-content: space-between; gap: .2rem; }
+
+.duiding { max-width: 48rem; margin: clamp(2rem, 5vw, 4rem) auto 0; }
+.duiding p { margin: .65rem 0 0; }
+.tabel { margin-top: 1rem; border: 1px solid var(--lijn); border-radius: .8rem; background: var(--beige); }
+.tabel summary { padding: .8rem 1rem; cursor: pointer; font: 700 1rem/1.5 var(--label); }
+.tabel table { width: 100%; border-collapse: collapse; font: 500 .86rem/1.4 var(--label); }
+.tabel caption { padding: .6rem .5rem; text-align: start; }
+.tabel th, .tabel td { padding: .55rem .5rem; text-align: start; border-top: 1px solid var(--lijn); }
+.tabel th[scope='row'] { font-weight: 500; }
+
+@media (max-width: 920px) {
+  .spoor { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: .45rem; }
+  .spoor { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 380px) {
+  .spoor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascotte:is([data-actief='true'], :hover) img { animation: none; }
+  .mascotte span, .afdrukken, .dag button time { transition: none; }
+  .dag[data-open='true'] .afdrukken { transform: none; }
+}

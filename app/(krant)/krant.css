@@ -31,10 +31,13 @@ body { margin: 0; }
 .merk { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font: 400 clamp(1.65rem, 6vw, 4.4rem)/1 var(--display); letter-spacing: -.065em; }
 .hoofdlogo { width: clamp(42px, 7vw, 76px); height: auto; border-radius: 24%; mix-blend-mode: multiply; }
 .merk-punt { color: var(--rood); }
-.hoofdnavigatie { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(.75rem, 4vw, 2.6rem); padding: .62rem .75rem; border-block: 1px solid var(--lijn); }
+.hoofdnavigatie { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem clamp(.25rem, 1.5vw, 1rem); padding: .5rem .75rem; border-block: 1px solid var(--lijn); }
 .hoofdnavigatie a, .sectiekop > a, .terug, .filters a, .knop { font: 700 .81rem/1.4 var(--label); }
-.hoofdnavigatie a { padding: .42rem .3rem; text-decoration: none; }
-.hoofdnavigatie a:hover, .hoofdnavigatie a[aria-current] { text-decoration: underline; text-decoration-thickness: 2px; }
+.hoofdnavigatie a { display: flex; align-items: center; justify-content: center; gap: .3rem; min-height: 44px; min-width: 0; padding: .4rem .65rem; border-radius: 1.5rem; text-align: center; text-decoration: none; overflow-wrap: anywhere; }
+.hoofdnavigatie a:hover, .hoofdnavigatie a[aria-current] { background: var(--beige); text-decoration: underline; text-decoration-thickness: 2px; }
+.hoofdnavigatie a[aria-current] { box-shadow: inset 0 0 0 1px var(--rood); }
+.hoofdnavigatie svg { flex: none; }
+.hoofdnavigatie .navigatie-accent { color: var(--rood); fill: var(--roze); }
 .quizblok {
   display: flex;
   align-items: center;
@@ -128,5 +131,6 @@ body { margin: 0; }
   .uitgelicht .artikelbeeld { min-height: 0; aspect-ratio: 1.55; }
 }
 @media (max-width: 520px) {
+  .hoofdnavigatie { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kaarten { grid-template-columns: minmax(0, 1fr); }
 }
