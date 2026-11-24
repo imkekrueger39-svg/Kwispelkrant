@@ -1,0 +1,118 @@
+.pagina {
+  max-width: 49rem;
+  margin-inline: auto;
+}
+
+.kop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1.25rem;
+  background: var(--roze);
+}
+
+.kop h1 { font-size: clamp(2rem, 5.5vw, 4rem); }
+.kop p:first-child { margin-bottom: .6rem; }
+.kop p:last-child { margin: .65rem 0 0; line-height: 1.35; }
+
+.mascottes {
+  display: block;
+  flex-shrink: 0;
+  width: min(42%, 18rem);
+  height: auto;
+  border-radius: 1rem;
+}
+
+.kaart {
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1.25rem;
+  background: var(--beige);
+  box-shadow: 0 .3rem 0 var(--goud);
+}
+
+.kaart h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+.voortgang {
+  display: inline-block;
+  padding: .3rem .7rem;
+  margin: 0 0 .7rem;
+  border-radius: 2rem;
+  background: var(--goud);
+  font: 700 .9rem/1.4 var(--label);
+}
+
+.opties {
+  display: grid;
+  gap: .6rem;
+  min-inline-size: 0;
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+}
+
+.optie, .uitslagen li {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .65rem .75rem;
+  border: 1px solid var(--lijn);
+  border-radius: .85rem;
+  background: var(--papier);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.optie { cursor: pointer; }
+.optie:has(input:checked) { background: var(--roze); border-color: var(--kers); }
+.optie input {
+  flex: 0 0 1.15rem;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  margin: 0;
+  accent-color: var(--kers);
+}
+
+.letter {
+  display: grid;
+  flex: 0 0 1.75rem;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--kers);
+  color: var(--beige);
+  font: 700 .85rem/1 var(--label);
+}
+
+.acties { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .65rem; }
+.knop, .terug {
+  min-height: 44px;
+  padding: .65rem 1rem;
+  border: 1px solid var(--kers);
+  border-radius: 2rem;
+  cursor: pointer;
+  font: 700 .9rem/1.35 var(--label);
+}
+.knop { background: var(--kers); color: var(--papier); }
+.knop:hover { background: var(--rood); }
+.terug { background: var(--papier); color: var(--kers); }
+.terug:hover { background: var(--roze); }
+.kaart :is(button, input, h2):focus-visible {
+  outline: 3px solid var(--rood);
+  outline-offset: 3px;
+}
+
+.uitslagen { display: grid; gap: .6rem; padding: 0; margin: 1rem 0; list-style: none; }
+.toelichting { margin: 1.3rem 0 0; font-size: 1.05rem; }
+
+@media (max-width: 600px) {
+  .kop { flex-direction: column; align-items: stretch; }
+  .mascottes { width: min(100%, 20rem); align-self: center; }
+}
+
+@media (max-width: 520px) {
+  .acties > button { flex: 1 1 auto; }
+}

@@ -9,6 +9,14 @@ export default async function Voorpagina() {
   return (
     <>
       <h1 className="visueel-verborgen">Kwispelkrant</h1>
+      <section className="quizblok" aria-labelledby="quizblok-titel">
+        <span className="quizblok-poot" aria-hidden="true">🐾</span>
+        <div>
+          <h2 id="quizblok-titel">Welke hond past bij jou? <Bloem /></h2>
+          <p>Ben jij een avontuurlijke herder, een gezellige knuffelhond of een sociale allemansvriend?</p>
+        </div>
+        <Link className="knop" href="/quiz">Ontdek jouw hondenmatch!</Link>
+      </section>
       {hoofdartikel && (
         <section className="uitgelicht" aria-labelledby="hoofdartikel">
           <div className="uitgelicht-tekst">

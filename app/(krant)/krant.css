@@ -35,6 +35,30 @@ body { margin: 0; }
 .hoofdnavigatie a, .sectiekop > a, .terug, .filters a, .knop { font: 700 .81rem/1.4 var(--label); }
 .hoofdnavigatie a { padding: .42rem .3rem; text-decoration: none; }
 .hoofdnavigatie a:hover, .hoofdnavigatie a[aria-current] { text-decoration: underline; text-decoration-thickness: 2px; }
+.quizblok {
+  display: flex;
+  align-items: center;
+  gap: .8rem clamp(.85rem, 3vw, 1.5rem);
+  margin-bottom: 1.5rem;
+  padding: clamp(.9rem, 3vw, 1.5rem);
+  border: 1px solid var(--kers);
+  border-radius: 1rem;
+  background: var(--beige);
+  box-shadow: 0 .27rem 0 var(--goud);
+}
+.quizblok-poot {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--roze);
+  font: 700 1.4rem/1 var(--label);
+}
+.quizblok h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.quizblok h2 .bloem { font-size: .65em; }
+.quizblok p { margin: .3rem 0 0; font-size: 1.1rem; line-height: 1.35; }
+.quizblok .knop { flex-shrink: 0; margin-inline-start: auto; text-align: center; }
 .uitgelicht { display: grid; grid-template-columns: 1fr 1.08fr; background: var(--beige); border: 1px solid var(--lijn); border-radius: 1rem; overflow: hidden; }
 .uitgelicht-tekst { padding: clamp(1.25rem, 4vw, 3.6rem); align-self: center; }
 .rubriek { display: flex; gap: .5rem; align-items: center; margin: 0 0 1.25rem; text-transform: uppercase; letter-spacing: .16em; font: 750 .74rem/1.5 var(--label); }
@@ -95,6 +119,8 @@ body { margin: 0; }
   .kaarten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
+  .quizblok { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .quizblok .knop { grid-column: 1 / -1; justify-content: center; margin-inline-start: 0; }
   .kader { width: calc(100% - 2rem); }
   .masthead { min-height: 82px; gap: .25rem; }
   .masthead .bloem { font-size: 1.25rem; }
