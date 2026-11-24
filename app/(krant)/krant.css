@@ -31,13 +31,55 @@ body { margin: 0; }
 .merk { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font: 400 clamp(1.65rem, 6vw, 4.4rem)/1 var(--display); letter-spacing: -.065em; }
 .hoofdlogo { width: clamp(42px, 7vw, 76px); height: auto; border-radius: 24%; mix-blend-mode: multiply; }
 .merk-punt { color: var(--rood); }
-.hoofdnavigatie { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem clamp(.25rem, 1.5vw, 1rem); padding: .5rem .75rem; border-block: 1px solid var(--lijn); }
-.hoofdnavigatie a, .sectiekop > a, .terug, .filters a, .knop { font: 700 .81rem/1.4 var(--label); }
-.hoofdnavigatie a { display: flex; align-items: center; justify-content: center; gap: .3rem; min-height: 44px; min-width: 0; padding: .4rem .65rem; border-radius: 1.5rem; text-align: center; text-decoration: none; overflow-wrap: anywhere; }
+.hoofdnavigatie { position: relative; z-index: 4; display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem clamp(.25rem, 1.5vw, 1rem); padding: .5rem .75rem; border-block: 1px solid var(--lijn); }
+.hoofdnavigatie a, .kwispelpoot-knop, .sectiekop > a, .terug, .filters a, .knop { font: 700 .81rem/1.4 var(--label); }
+.hoofdnavigatie a, .kwispelpoot-knop { display: flex; align-items: center; justify-content: center; gap: .3rem; min-height: 44px; min-width: 0; padding: .4rem .65rem; border-radius: 1.5rem; text-align: center; text-decoration: none; overflow-wrap: anywhere; }
 .hoofdnavigatie a:hover, .hoofdnavigatie a[aria-current] { background: var(--beige); text-decoration: underline; text-decoration-thickness: 2px; }
 .hoofdnavigatie a[aria-current] { box-shadow: inset 0 0 0 1px var(--rood); }
 .hoofdnavigatie svg { flex: none; }
 .hoofdnavigatie .navigatie-accent { color: var(--rood); fill: var(--roze); }
+.kwispelpoot { position: relative; min-width: 0; }
+.kwispelpoot-knop {
+  width: 100%;
+  border: 0;
+  background: var(--beige);
+  color: var(--kers);
+  cursor: pointer;
+}
+.kwispelpoot-knop:hover, .kwispelpoot-knop[aria-expanded="true"] { background: var(--roze); }
+.kwispelpoot-knop[data-actief="true"] {
+  box-shadow: inset 0 0 0 1px var(--rood);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .22em;
+}
+.kwispelpoot-knop:focus-visible { outline: 3px solid var(--rood); outline-offset: 3px; }
+.kwispelpoot-pijl { margin-inline-start: .15rem; }
+.kwispelpoot-knop[aria-expanded="true"] .kwispelpoot-pijl { transform: rotate(180deg); }
+.kwispelpoot-paneel {
+  position: absolute;
+  inset-inline-end: 0;
+  top: calc(100% + .4rem);
+  width: 15.5rem;
+  padding: .65rem;
+  border: 1px solid var(--kers);
+  border-radius: 1rem;
+  background: var(--papier);
+  box-shadow: 0 .25rem 0 var(--goud), 0 .5rem 1.2rem var(--lijn);
+}
+.kwispelpoot-titel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin: 0 0 .35rem;
+  padding: .55rem .7rem;
+  border-radius: .65rem;
+  background: var(--roze);
+  font: 400 1.15rem/1.3 var(--display);
+}
+.kwispelpoot-paneel ul { display: grid; gap: .15rem; margin: 0; padding: 0; list-style: none; }
+.kwispelpoot-paneel a { justify-content: flex-start; gap: .55rem; text-align: start; }
 .quizblok {
   display: flex;
   align-items: center;
@@ -130,7 +172,11 @@ body { margin: 0; }
   .uitgelicht, .over-raster { grid-template-columns: minmax(0, 1fr); }
   .uitgelicht .artikelbeeld { min-height: 0; aspect-ratio: 1.55; }
 }
-@media (max-width: 520px) {
+@media (max-width: 650px) {
   .hoofdnavigatie { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kwispelpoot { position: static; }
+  .kwispelpoot-paneel { top: calc(100% + .3rem); inset-inline: .75rem; width: auto; }
+}
+@media (max-width: 520px) {
   .kaarten { grid-template-columns: minmax(0, 1fr); }
 }

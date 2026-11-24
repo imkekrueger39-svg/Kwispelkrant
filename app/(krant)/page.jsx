@@ -40,6 +40,14 @@ export default async function Voorpagina() {
         </div>
         {artikelen.length ? <Artikelkaarten artikelen={artikelen.slice(0, 3)} /> : <p>Er zijn nog geen artikelen.</p>}
       </section>
+      <section className="quizblok recent" aria-labelledby="snuffelteaser">
+        <span className="quizblok-poot" aria-hidden="true">🐾</span>
+        <div>
+          <h2 id="snuffelteaser">De Snuffelzoeker <Bloem /></h2>
+          <p>Snuffel jij alle woorden bij elkaar?</p>
+        </div>
+        <Link className="knop" href="/snuffelzoeker">Speel of maak een puzzel</Link>
+      </section>
     </>
   );
 }

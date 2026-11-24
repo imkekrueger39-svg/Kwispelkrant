@@ -1,0 +1,141 @@
+.pagina { max-width: 68rem; margin-inline: auto; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(.8rem, 3vw, 2rem);
+  padding: clamp(1rem, 3.5vw, 2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1.25rem;
+  background: var(--roze);
+  box-shadow: 0 .28rem 0 var(--goud);
+}
+.hero h1 { font-size: clamp(2.2rem, 5.5vw, 4.7rem); }
+.hero h1 span { font-size: .55em; vertical-align: .12em; }
+.hero p { margin: .7rem 0 0; font-size: clamp(1.15rem, 2.5vw, 1.65rem); }
+.hero img { display: block; width: 100%; height: auto; border-radius: .85rem; }
+
+.dossier { margin-top: clamp(1.45rem, 4vw, 2.6rem); }
+.tabs { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 1px solid var(--lijn); }
+.tabs button, .knop {
+  min-height: 44px;
+  padding: .55rem .85rem;
+  border: 1px solid var(--kers);
+  border-radius: 2rem;
+  background: var(--beige);
+  color: var(--kers);
+  font: 700 .88rem/1.35 var(--label);
+  cursor: pointer;
+}
+.tabs button[aria-selected="true"] { background: var(--kers); color: var(--papier); }
+.knop { background: var(--kers); color: var(--papier); }
+.knop:hover { background: var(--rood); }
+.knop:disabled { opacity: .65; cursor: wait; }
+.dossier :is(button, input, select, textarea, h2):focus-visible { outline: 3px solid var(--rood); outline-offset: 3px; }
+
+.spel, .maker { display: grid; align-items: start; gap: 1rem; }
+.spel { grid-template-columns: minmax(0, 1.5fr) minmax(13rem, .65fr); }
+.maker { grid-template-columns: minmax(0, .83fr) minmax(0, 1.17fr); }
+.thema { display: flex; flex-wrap: wrap; align-items: end; gap: .6rem; }
+.thema label, .formulier label { display: grid; gap: .25rem; min-width: 0; font: 700 .9rem/1.4 var(--label); }
+.dossier :is(input, select, textarea) {
+  min-height: 44px;
+  width: 100%;
+  min-width: 0;
+  padding: .45rem .65rem;
+  border: 1px solid var(--kers);
+  border-radius: .55rem;
+  background: var(--papier);
+  color: var(--kers);
+  font: 500 1rem/1.35 var(--label);
+}
+.dossier textarea { resize: vertical; }
+.hulp, .fout { margin: .55rem 0; font: 550 .85rem/1.45 var(--label); }
+.hulp:empty { margin: 0; }
+.fout { color: var(--rood); }
+
+.raster {
+  display: grid;
+  padding: clamp(.2rem, 1.1vw, .55rem);
+  border: 1px solid var(--kers);
+  border-radius: .65rem;
+  background: var(--beige);
+  user-select: none;
+}
+.rij { display: grid; grid-template-columns: repeat(var(--kolommen), minmax(0, 1fr)); }
+.rij > div { min-width: 0; }
+.rij button, .rij > span {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #640d1422;
+  border-radius: .18rem;
+  background: var(--markering, var(--papier));
+  color: var(--kers);
+  font: 750 clamp(.67rem, 2.25vw, 1.15rem)/1 var(--label);
+}
+.rij button { cursor: pointer; touch-action: manipulation; }
+.rij button:hover { box-shadow: inset 0 0 0 1px var(--rood); }
+.rij button[aria-pressed="true"] { background: var(--roze); }
+.rij button[data-begin="true"] { box-shadow: inset 0 0 0 2px var(--kers); }
+.rij button:focus-visible { position: relative; outline-offset: -2px; }
+
+.woordenPaneel, .formulier, .voorbeeld {
+  min-width: 0;
+  padding: clamp(.75rem, 2vw, 1.2rem);
+  border: 1px solid var(--kers);
+  border-radius: 1rem;
+  background: var(--beige);
+}
+.woordkop { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.woordkop > div { position: relative; flex: 0 0 4.5rem; }
+.woordkop img { display: block; width: 100%; height: auto; border-radius: .7rem; }
+.woordkop span { position: absolute; top: -.7rem; right: 0; color: var(--rood); }
+.blij { animation: kwispel .48s ease-out; }
+.voortgang { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .75rem; }
+.voortgang svg[data-gevuld="true"] { fill: var(--roze); color: var(--rood); }
+.woorden { display: flex; flex-wrap: wrap; gap: .35rem; margin: .7rem 0 0; padding: 0; list-style: none; }
+.woorden li {
+  max-width: 100%;
+  padding: .27rem .45rem;
+  border-radius: .45rem;
+  background: var(--markering, var(--papier));
+  overflow-wrap: anywhere;
+  font: 750 .78rem/1.35 var(--label);
+}
+.kampioen {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .85rem 0 0;
+  padding: .7rem;
+  border: 2px dashed var(--rood);
+  border-radius: .7rem;
+  background: var(--roze);
+  font-family: var(--display);
+  animation: stempel .5s ease-out;
+}
+.kampioen svg { flex: none; }
+.formulier { display: grid; gap: .7rem; }
+.formulier p { margin: 0; }
+.voorbeeld { border: 3px double var(--rood); background: var(--papier); }
+.voorbeeld[data-rand="bloemen"] { border: 3px dotted var(--rood); background: var(--roze); }
+.voorbeeld[data-rand="pootjes"] { border: 3px dashed var(--rood); }
+.voorbeeld h2, .voorbeeld p { overflow-wrap: anywhere; }
+.voorbeeld .raster { margin-top: .75rem; }
+.downloads { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
+
+@keyframes kwispel { 35% { transform: rotate(-6deg); } 70% { transform: rotate(3deg); } }
+@keyframes stempel { from { opacity: .3; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 720px) {
+  .hero, .spel, .maker { grid-template-columns: minmax(0, 1fr); }
+  .woordenPaneel { order: -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blij, .kampioen { animation: none; }
+}
